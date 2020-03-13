@@ -107,7 +107,7 @@ def install_dependencies():
             print("Error: command 'fab' not found, please install fabric")
             exit()
 
-    # Install dependencies using pip3
+    # Install dependencies using pip
     install("PyYAML")
     install("fabric3")
     install("numpy")
