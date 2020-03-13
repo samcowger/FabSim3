@@ -95,8 +95,26 @@ def config_yml_files():
     if not os.path.exists(os.path.join(FS3_env.FabSim3_PATH, 'localhost_exe')):
         os.makedirs(os.path.join(FS3_env.FabSim3_PATH, 'localhost_exe'))
 
+def install(package):
+    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
+
+def install_dependencies():
+    # Check if fab is installed
+    if  subprocess.run(["which", "fab"]) != 0:
+        if "Ubuntu" in FS3_env.OS_version:
+            subprocess.run(["sudo", "apt", "install", "fabric"])
+        else:
+            print("Error: command 'fab' not found, please install fabric")
+            exit()
+
+    # Install dependencies using pip3
+    install("PyYAML")
+    install("fabric3")
+    install("numpy")
 
 def main():
+
+    install_dependencies()
 
     config_yml_files()
 
