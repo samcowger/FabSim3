@@ -383,4 +383,4 @@ def print_msg_box(msg, indent=1, width=None, title=None, border="═"):
         box += f'{l}{space}{"-" * len(title):<{width}}{space}{r}\n'
     box += ''.join([f'{l}{space}{line:<{width}}{space}{r}\n' for line in lines])
     box += f'{b_l}{b * (width + indent * 2)}{b_r}'  # lower_border
-    print(box)
+    print(msg)
